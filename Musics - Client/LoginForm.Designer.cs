@@ -31,21 +31,23 @@
             this.LoginControl = new Musics___Client.UI.LoginControl();
             this.SuspendLayout();
             // 
-            // loginControl1
+            // LoginControl
             // 
-            this.LoginControl.Location = new System.Drawing.Point(13, 28);
-            this.LoginControl.Name = "loginControl1";
-            this.LoginControl.Size = new System.Drawing.Size(414, 410);
+            this.LoginControl.Location = new System.Drawing.Point(12, 12);
+            this.LoginControl.Name = "LoginControl";
+            this.LoginControl.Size = new System.Drawing.Size(387, 318);
             this.LoginControl.TabIndex = 0;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 587);
+            this.ClientSize = new System.Drawing.Size(427, 372);
             this.Controls.Add(this.LoginControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Musics ";
             this.ResumeLayout(false);
 
         }

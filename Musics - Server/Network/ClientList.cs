@@ -25,10 +25,6 @@ namespace Musics___Server.Network
 
         public IEnumerable<User> GetConnectedUser()
         => Values.Select(uid => Usersinfos.UsersInfos.GetUser(uid)).Where(x => x != null);
-         
-
-         
-           
 
         private bool Contains(User User)
             => Contains(User.UID);

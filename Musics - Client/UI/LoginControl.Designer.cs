@@ -66,7 +66,7 @@
             // 
             // credentialControl
             // 
-            this.credentialControl.Location = new System.Drawing.Point(10, 61);
+            this.credentialControl.Location = new System.Drawing.Point(6, 55);
             this.credentialControl.Name = "credentialControl";
             this.credentialControl.Size = new System.Drawing.Size(379, 185);
             this.credentialControl.TabIndex = 0;
@@ -79,7 +79,7 @@
             this.Controls.Add(this.SignInButton);
             this.Controls.Add(this.credentialControl);
             this.Name = "LoginControl";
-            this.Size = new System.Drawing.Size(401, 361);
+            this.Size = new System.Drawing.Size(391, 317);
             this.Load += new System.EventHandler(this.LoginControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CredentialValidatorBindingSource)).EndInit();
             this.ResumeLayout(false);

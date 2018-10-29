@@ -19,7 +19,6 @@ namespace Musics___Client.API
         public event LoginHandler LoginSucces;
         public event LoginHandler LoginFailed;
 
-
         private LoginServices()
         {
             NetworkClient.ip = IPAddress.Parse(AppSettings.ApplicationSettings.Get().ServerIp);

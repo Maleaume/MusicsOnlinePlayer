@@ -5,24 +5,27 @@ using System.Linq;
 namespace Musics___Server.Authentification
 {
     class AuthentificationService
-    {       
+    {
+
+        private readonly XmlDocument doc = new XmlDocument();
+
         public void SetupAuth()
         {
             if (!File.Exists(@"users.xml"))
             {
-                using(XmlWriter writer = XmlWriter.Create(@"users.xml"))
+                using (XmlWriter writer = XmlWriter.Create(@"users.xml"))
                 {
                     writer.WriteStartDocument();
                     writer.WriteStartElement("Users");
                     writer.WriteEndElement();
-                    writer.WriteEndDocument();                
+                    writer.WriteEndDocument();
                 }
             }
         }
 
-        readonly XmlDocument doc = new XmlDocument();
 
-        public void SignupUser(CryptedCredentials cryptedCredentials  )
+
+        public void SignupUser(CryptedCredentials cryptedCredentials)
         {
             var user = new User(cryptedCredentials);
             if (!SigninUser(user))
@@ -56,41 +59,28 @@ namespace Musics___Server.Authentification
         public bool SigninUser(User user)
         {
             doc.Load(@"users.xml");
-            return UserIDExist(user.UID); 
+            return UserIDExist(user.UID).exist;
         }
 
-        public bool UserIDExist(string UID)
+        public (bool exist, XmlNode userNode) UserIDExist(string UID)
         {
             doc.Load(@"users.xml");
             var nodesList = doc.DocumentElement.SelectNodes("User");
-            return nodesList.Cast<XmlNode>().Any(n => n["UID"].InnerText == UID);
+            var userNode = nodesList.Cast<XmlNode>().SingleOrDefault(n => n["UID"].InnerText == UID);
+            return (userNode != null, userNode);
         }
 
-        public bool EditUser(string OldUID, User NewUser)
+
+        public bool EditUser(CryptedCredentials oldCredentials, CryptedCredentials newCredentials)
         {
-            XmlDocument docs = new XmlDocument();
-            docs.Load(@"users.xml");
-            XmlNodeList nodes = docs.DocumentElement.SelectNodes("User");
+            (var userExist, var userNode) = UserIDExist(newCredentials.UID);
+            if (!userExist) return false; //TODO username already exist.
+            userNode["Name"].InnerText = newCredentials.Login;
+            userNode["UID"].InnerText = newCredentials.UID;
+            doc.Save(@"users.xml");
 
-            foreach (XmlNode n in nodes)
-            {
-                if (n["UID"].InnerText == OldUID)
-                {
-                    if (!UserIDExist(NewUser.UID))
-                    {
-                        n["Name"].InnerText = NewUser.Name;
-                        n["UID"].InnerText = NewUser.UID;
-                        docs.Save(@"users.xml");
-
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }                    
-            }
-            return false;
+            return true;
         }
+
     }
 }

@@ -21,14 +21,14 @@ namespace Musics___Client
             ApplicationSettings.Setup();
         }
 
-        Client ClientForm = new Client();
+        Client ClientForm; // = new Client();
         
         private void LoginPage_Load(object sender, EventArgs e)
         {
             NetworkClient.ip = IPAddress.Parse(AppSettings.ApplicationSettings.Get().ServerIp);
             NetworkClient.Connect();
-            ClientForm.LoginInfoReceived += ClientForm_LoginInfoReceived;
-            settingsForm.FormClosing += SettingsForm_FormClosing;
+          //  ClientForm.LoginInfoReceived += ClientForm_LoginInfoReceived;
+          //  settingsForm.FormClosing += SettingsForm_FormClosing;
         }
 
         private void ClientForm_LoginInfoReceived(object sender, EventArgs e)

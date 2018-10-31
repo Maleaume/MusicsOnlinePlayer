@@ -45,9 +45,9 @@
             this.UISearchUser = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.UISettings = new System.Windows.Forms.TabPage();
-            this.hueControl2 = new ControlLibrary.User_Interface.HueControl();
             this.label1 = new System.Windows.Forms.Label();
             this.UIAccount = new System.Windows.Forms.TabPage();
+            this.AccountControl = new Musics___Client.UI.AccountControl();
             this.UIFavorites = new System.Windows.Forms.TabPage();
             this.FavoriteControl = new Musics___Client.UI.FavoriteControl();
             this.UISearch = new System.Windows.Forms.TabPage();
@@ -56,9 +56,7 @@
             this.homeControl1 = new Musics___Client.UI.HomeControl();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.hueControl1 = new ControlLibrary.User_Interface.HueControl();
-            this.AccountControl = new Musics___Client.UI.AccountControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage(); 
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -238,7 +236,6 @@
             // 
             // UISettings
             // 
-            this.UISettings.Controls.Add(this.hueControl2);
             this.UISettings.Controls.Add(this.label1);
             this.UISettings.Location = new System.Drawing.Point(4, 34);
             this.UISettings.Name = "UISettings";
@@ -247,17 +244,6 @@
             this.UISettings.TabIndex = 7;
             this.UISettings.Text = "Settings";
             this.UISettings.UseVisualStyleBackColor = true;
-            // 
-            // hueControl2
-            // 
-            this.hueControl2.AutoSize = true;
-            this.hueControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.hueControl2.BackColor = System.Drawing.Color.White;
-            this.hueControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hueControl2.Location = new System.Drawing.Point(-1, 0);
-            this.hueControl2.Name = "hueControl2";
-            this.hueControl2.Size = new System.Drawing.Size(1186, 399);
-            this.hueControl2.TabIndex = 30;
             // 
             // label1
             // 
@@ -280,6 +266,16 @@
             this.UIAccount.TabIndex = 6;
             this.UIAccount.Text = "Account";
             this.UIAccount.UseVisualStyleBackColor = true;
+            // 
+            // AccountControl
+            // 
+            this.AccountControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccountControl.Location = new System.Drawing.Point(2, 0);
+            this.AccountControl.Margin = new System.Windows.Forms.Padding(6);
+            this.AccountControl.Name = "AccountControl";
+            this.AccountControl.Size = new System.Drawing.Size(683, 539);
+            this.AccountControl.TabIndex = 0;
+            this.AccountControl.EditAccountDone += new System.EventHandler<Musics___Client.API.Events.EditAccountEventArgs>(this.AccountControl_EditAccountDone);
             // 
             // UIFavorites
             // 
@@ -388,28 +384,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // hueControl1
-            // 
-            this.hueControl1.AutoSize = true;
-            this.hueControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.hueControl1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.hueControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hueControl1.Location = new System.Drawing.Point(3, 6);
-            this.hueControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.hueControl1.Name = "hueControl1";
-            this.hueControl1.Size = new System.Drawing.Size(1186, 399);
-            this.hueControl1.TabIndex = 30;
-            // 
-            // AccountControl
-            // 
-            this.AccountControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountControl.Location = new System.Drawing.Point(2, 0);
-            this.AccountControl.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.AccountControl.Name = "AccountControl";
-            this.AccountControl.Size = new System.Drawing.Size(683, 539);
-            this.AccountControl.TabIndex = 0;
-            this.AccountControl.EditAccountDone += new System.EventHandler<Musics___Client.API.Events.EditAccountEventArgs>(this.AccountControl_EditAccountDone);
+           
             // 
             // Client
             // 
@@ -469,9 +444,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
-        private ControlLibrary.UPlayer uPlayer1;
-        private ControlLibrary.User_Interface.HueControl hueControl1;
-        private ControlLibrary.User_Interface.HueControl hueControl2;
+        private ControlLibrary.UPlayer uPlayer1; 
         private UI.HomeControl homeControl1;
         private UI.SearchControl SearchControl;
         private UI.FavoriteControl FavoriteControl;

@@ -10,7 +10,12 @@ namespace Musics___Client.UI
         public AccountControl()
         {
             InitializeComponent();
+            signInControl.SignInMatchedPassword += SignInControl_SignInMatchedPassword;
+            signInControl.SignInUnmatchedPassword += SignInControl_SignInUnmatchedPassword;
         }
+
+        private void SignInControl_SignInUnmatchedPassword()  { UIAccountEditButton.Enabled = false; }
+          private void SignInControl_SignInMatchedPassword()   { UIAccountEditButton.Enabled = true; }
 
         public event EventHandler<EditAccountEventArgs> EditAccountDone;
         protected virtual void OnEditAccountDone(EditAccountEventArgs e) => EditAccountDone?.Invoke(this, e);
@@ -18,22 +23,18 @@ namespace Musics___Client.UI
 
         private void UIAccountEdit_Click(object sender, EventArgs e)
         {
-            if (UIEditName != null)
-                OnEditAccountDone(new EditAccountEventArgs(UIEditPassword2.Text, UIEditName.Text));
-            else
-                throw new NotImplementedException();
-                OnEditAccountDone(new EditAccountEventArgs(UIEditPassword2.Text));
+            OnEditAccountDone(new EditAccountEventArgs(signInControl.NewCredentials));
         }
 
         private void UIEditName_TextChanged(object sender, EventArgs e)
-            => UIAccountEdit.Enabled = UIEditName.Text == null ? true : true;
+            => UIAccountEditButton.Enabled = UIEditName.Text == null ? true : true;
 
 
         private void UIEditPassword1_TextChanged(object sender, EventArgs e)
-            => UIAccountEdit.Enabled = CheckSyntax();
+            => UIAccountEditButton.Enabled = CheckSyntax();
 
         private void UIEditPassword2_TextChanged(object sender, EventArgs e)
-            => UIAccountEdit.Enabled = CheckSyntax();
+            => UIAccountEditButton.Enabled = CheckSyntax();
 
         public bool CheckSyntax()
         {
@@ -49,5 +50,10 @@ namespace Musics___Client.UI
             
         public void TellError(string Error)
             => Invoke((MethodInvoker)delegate {  UIEditError.Text = "Username use by another person !";});
+
+        private void signInControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

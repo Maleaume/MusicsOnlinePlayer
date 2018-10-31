@@ -28,7 +28,7 @@ namespace Musics___Client.API
             }
         }
 
-        public void EditUser(string NewPassword, string oldUID, string Newname = null)
-            => NetworkClient.SendObject(new EditUser(oldUID, new User(new UserCredentials(Newname, NewPassword))));
+        public void EditUser(CryptedCredentials oldCredentials, CryptedCredentials newCredentials) 
+            => NetworkClient.SendObject(new EditUser(oldCredentials, newCredentials));
     }
 }

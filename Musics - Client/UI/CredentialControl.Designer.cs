@@ -62,11 +62,6 @@
             UILogin.Size = new System.Drawing.Size(350, 33);
             UILogin.TabIndex = 6;
             // 
-            // CredentialBindingSource
-            // 
-            this.CredentialBindingSource.AllowNew = false;
-            this.CredentialBindingSource.DataSource = typeof(Utility.Network.Users.ICredentials);
-            // 
             // loginLabel
             // 
             loginLabel.AutoSize = true;
@@ -89,10 +84,14 @@
             UIPassword.Size = new System.Drawing.Size(350, 33);
             UIPassword.TabIndex = 7;
             // 
+            // CredentialBindingSource
+            // 
+            this.CredentialBindingSource.AllowNew = false;
+            this.CredentialBindingSource.DataSource = typeof(Utility.Network.Users.ICredentials);
+            // 
             // CredentialControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(passwordLabel);
             this.Controls.Add(UILogin);
             this.Controls.Add(loginLabel);

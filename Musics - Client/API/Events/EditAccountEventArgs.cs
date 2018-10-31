@@ -1,16 +1,15 @@
 ﻿using System;
+using Utility.Network.Users;
 
 namespace Musics___Client.API.Events
 {
     public class EditAccountEventArgs : EventArgs
-    {
-        public EditAccountEventArgs(string newPassword, string newName = null)
-        {
-            NewName = newName;
-            NewPassword = newPassword;
-        }
+    { 
+        public CryptedCredentials NewCredentials { get; }
 
-        public string NewName { get; set; }
-        public string NewPassword { get; set; }
+        public EditAccountEventArgs(CryptedCredentials newCredentials)
+        {
+            NewCredentials = newCredentials; 
+        }
     }
 }

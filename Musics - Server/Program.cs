@@ -12,9 +12,7 @@ using Utility.Musics;
 using Utility.Network.Dialog.Rating;
 using Utility.Network.Dialog.Edits;
 using Utility.Network.Dialog.Uploads;
-using Utility.Network.Dialog.Authentification;
-
-
+using Utility.Network.Dialog.Authentification; 
 
 namespace Musics___Server
 {
@@ -214,18 +212,19 @@ namespace Musics___Server
 
         private static void TreatEditUser(Socket socket, EditUser editUser)
         {
-            if (MyServer.AuthService.EditUser(editUser.UIDOld, editUser.NewUser))
+            if (MyServer.AuthService.EditUser(editUser.OldCredentials, editUser.NewCredentials))
             {
-                MyServer.SendObject(new EditUserReport(true, editUser.NewUser), socket);
+                var newuser = new User(editUser.NewCredentials);
+                MyServer.SendObject(new EditUserReport(true, newuser), socket);
 
                 MyServer.Clients.Remove(socket);
-                MyServer.Clients.AddUser(editUser.NewUser, socket);
-                MyServer.Log.Warn($"User {editUser.NewUser} has been edited");
+                MyServer.Clients.AddUser(newuser, socket);
+                MyServer.Log.Warn($"User {newuser} has been edited");
             }
             else
             {
-                MyServer.Log.Warn($"Editing the user {editUser.NewUser} failed !");
-                MyServer.SendObject(new EditUserReport(false, editUser.NewUser), socket);
+                MyServer.Log.Warn($"Editing the user {editUser.NewCredentials} failed !");
+                MyServer.SendObject(new EditUserReport(false,null), socket);
             }
         }
 

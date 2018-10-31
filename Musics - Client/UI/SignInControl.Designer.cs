@@ -28,18 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label confirmPasswordLabel;
+            this.UIConfirmPassword = new System.Windows.Forms.TextBox();
+            this.credentialControl = new Musics___Client.UI.CredentialControl();
+            confirmPasswordLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // confirmPasswordLabel
+            // 
+            confirmPasswordLabel.AutoSize = true;
+            confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            confirmPasswordLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            confirmPasswordLabel.Location = new System.Drawing.Point(17, 191);
+            confirmPasswordLabel.Name = "confirmPasswordLabel";
+            confirmPasswordLabel.Size = new System.Drawing.Size(184, 25);
+            confirmPasswordLabel.TabIndex = 11;
+            confirmPasswordLabel.Text = "Confirm password";
+            // 
+            // UIConfirmPassword
+            // 
+            this.UIConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UIConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UIConfirmPassword.Location = new System.Drawing.Point(22, 219);
+            this.UIConfirmPassword.Name = "UIConfirmPassword";
+            this.UIConfirmPassword.PasswordChar = '*';
+            this.UIConfirmPassword.Size = new System.Drawing.Size(350, 33);
+            this.UIConfirmPassword.TabIndex = 10;
+            this.UIConfirmPassword.TextChanged += new System.EventHandler(this.UIConfirmPassword_TextChanged);
+            // 
+            // credentialControl
+            // 
+            this.credentialControl.Location = new System.Drawing.Point(3, 3);
+            this.credentialControl.Name = "credentialControl";
+            this.credentialControl.Size = new System.Drawing.Size(379, 185);
+            this.credentialControl.TabIndex = 0;
             // 
             // SignInControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(confirmPasswordLabel);
+            this.Controls.Add(this.UIConfirmPassword);
+            this.Controls.Add(this.credentialControl);
             this.Name = "SignInControl";
-            this.Size = new System.Drawing.Size(220, 279);
+            this.Size = new System.Drawing.Size(381, 267);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private CredentialControl credentialControl;
+        private System.Windows.Forms.TextBox UIConfirmPassword;
     }
 }

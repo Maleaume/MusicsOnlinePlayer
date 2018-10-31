@@ -98,7 +98,6 @@ namespace Musics___Client
             NetworkClient.recevoir.Start();
 
             EditAccountDetails(Me);
-
             NetworkClient.SendObject(new Request(Me.UID));
 
             InitServices();
@@ -473,7 +472,9 @@ namespace Musics___Client
         #endregion
 
         private void AccountControl_EditAccountDone(object sender, EditAccountEventArgs e)
-            => EditAccountServices.Instance.EditUser(e.NewPassword, Me.UID, e.NewName);
+        {
+            EditAccountServices.Instance.EditUser(Me, e.NewCredentials);
+        }
 
     }
 }

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.signInControl = new Musics___Client.UI.SignInControl();
             this.UIEditError = new System.Windows.Forms.Label();
-            this.UIAccountEdit = new System.Windows.Forms.Button();
+            this.UIAccountEditButton = new System.Windows.Forms.Button();
             this.UIEditPassword2 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.UIEditPassword1 = new System.Windows.Forms.TextBox();
@@ -46,8 +47,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.signInControl);
             this.panel2.Controls.Add(this.UIEditError);
-            this.panel2.Controls.Add(this.UIAccountEdit);
+            this.panel2.Controls.Add(this.UIAccountEditButton);
             this.panel2.Controls.Add(this.UIEditPassword2);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.UIEditPassword1);
@@ -61,6 +63,13 @@
             this.panel2.Size = new System.Drawing.Size(634, 389);
             this.panel2.TabIndex = 8;
             // 
+            // signInControl
+            // 
+            this.signInControl.Location = new System.Drawing.Point(187, 11);
+            this.signInControl.Name = "signInControl";
+            this.signInControl.Size = new System.Drawing.Size(381, 267);
+            this.signInControl.TabIndex = 18;
+            // 
             // UIEditError
             // 
             this.UIEditError.AutoSize = true;
@@ -71,20 +80,20 @@
             this.UIEditError.Size = new System.Drawing.Size(0, 16);
             this.UIEditError.TabIndex = 5;
             // 
-            // UIAccountEdit
+            // UIAccountEditButton
             // 
-            this.UIAccountEdit.BackColor = System.Drawing.Color.LimeGreen;
-            this.UIAccountEdit.Enabled = false;
-            this.UIAccountEdit.FlatAppearance.BorderSize = 0;
-            this.UIAccountEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UIAccountEdit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UIAccountEdit.Location = new System.Drawing.Point(496, 319);
-            this.UIAccountEdit.Name = "UIAccountEdit";
-            this.UIAccountEdit.Size = new System.Drawing.Size(119, 36);
-            this.UIAccountEdit.TabIndex = 17;
-            this.UIAccountEdit.Text = "Edit";
-            this.UIAccountEdit.UseVisualStyleBackColor = false;
-            this.UIAccountEdit.Click += new System.EventHandler(this.UIAccountEdit_Click);
+            this.UIAccountEditButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.UIAccountEditButton.Enabled = false;
+            this.UIAccountEditButton.FlatAppearance.BorderSize = 0;
+            this.UIAccountEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UIAccountEditButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.UIAccountEditButton.Location = new System.Drawing.Point(496, 319);
+            this.UIAccountEditButton.Name = "UIAccountEditButton";
+            this.UIAccountEditButton.Size = new System.Drawing.Size(119, 36);
+            this.UIAccountEditButton.TabIndex = 17;
+            this.UIAccountEditButton.Text = "Edit";
+            this.UIAccountEditButton.UseVisualStyleBackColor = false;
+            this.UIAccountEditButton.Click += new System.EventHandler(this.UIAccountEdit_Click);
             // 
             // UIEditPassword2
             // 
@@ -207,7 +216,7 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label UIEditError;
-        private System.Windows.Forms.Button UIAccountEdit;
+        private System.Windows.Forms.Button UIAccountEditButton;
         private System.Windows.Forms.TextBox UIEditPassword2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox UIEditPassword1;
@@ -218,5 +227,6 @@
         private System.Windows.Forms.Label UIRank;
         private System.Windows.Forms.Label UIAccountId;
         private System.Windows.Forms.Label UIAccountName;
+        private SignInControl signInControl;
     }
 }

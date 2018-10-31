@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using Utility.Musics;
 
 namespace Utility.Network.Users
 {
     [Serializable]
+    [XmlType(AnonymousType = true, Namespace = "", TypeName = "")]
+    [XmlRoot(ElementName = "Users")]
+    public class Users : List<User>
+    { }
+
     public class User : CryptedCredentials
     {
 
         public Rank Rank { get; set; }
-
+        [XmlIgnore]
         public string Name => Login;
 
         public User(ICredentials credential)
@@ -66,7 +73,7 @@ namespace Utility.Network.Users
     [Serializable]
     public class CryptedCredentials
     {
-        protected string Login { get; }
+        public string Login { get; }
         public string UID { get; set; }
 
         public CryptedCredentials(string login, string uid)
@@ -88,7 +95,18 @@ namespace Utility.Network.Users
         }
         protected virtual string GenerateUID(ICredentials credentials)
             => Hash.SHA256Hash(credentials.Login + credentials.Password);
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is CryptedCredentials cryptedCredential))
+                return false;
+            return cryptedCredential.UID == UID;
+        }
+
+        public override int GetHashCode() => UID.GetHashCode();
     }
+
+
 
     public abstract class UserUidCredentials : CryptedCredentials
     {
